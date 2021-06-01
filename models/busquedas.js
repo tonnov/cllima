@@ -5,7 +5,7 @@ const axios = require('axios');
 // const archivo = './data/data.json';
 
 
-class Busquedas {
+class Busquedas {   
 
     _historial = [];
     dbPath = './data/data.json';
@@ -21,13 +21,9 @@ class Busquedas {
     get getHistorial(){
 
         return this._historial.map( lugar => {
-            const palabras = lugar.split(' ');
-            // return palabras;
-            return palabras.map( palabra => `${palabra.charAt(0).toUpperCase()}${palabra.slice(1)}` ).join(' ');
-
+            // return lugar.split(' ').map( palabra => `${palabra.charAt(0).toUpperCase()}${palabra.slice(1)}` ).join(' ');
+            return lugar.split(' ').reduce( (str, palabra) =>  `${str} ${palabra.charAt(0).toUpperCase()}${palabra.slice(1)}`,'');
         })
-
-        return hist;
     }
 
     get paramsMapbox() {
